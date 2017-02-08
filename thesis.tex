@@ -34,8 +34,8 @@
 %	THESIS
 %----------------------------------------------------------------------------------------
 
-\def\thesislang{finnish} %change this depending on your language
-\author{Nimi/Name}
+\def\thesislang{english} %change this depending on your language
+\author{Juho Jokela}
 \def\thesis{Opinnäytetyö/Thesis}
 \def\alaotsikko{Alaotsikko/Subtitle}
 
@@ -52,7 +52,7 @@ Etunimi Sukunimi, Titteli
 \def\pvm{\specialdate\today}
 
 %English section, for abstract
-\title{Your title here}
+\title{Evaluating and measuring the adequacy of a programming job applicant}
 \def\metropoliadegree {Bachelor of Engineering}
 \def\metropoliadegreeprogramme {Name of your degree programme}
 \def\metropoliaspecialisation {Name of your specialisation option}
@@ -281,7 +281,10 @@ xleftmargin=1cm
 \makeglossaries
 
 %Acronyms, abbreviations, etc. definitions
+\newacronym{hr}{HR}{Human Resourcing}
+\newacronym{it}{IT}{Information technology}
 \newacronym{html}{HTML}{HyperText Markup Language}
+\newacronym{api}{API}{Application programming interface}
 \newacronym{sql}{SQL}{Structured Query Language}
 \newacronym{io}{I/O}{Input/Output}
 \newacronym{ram}{RAM}{Random Access Memory}
@@ -468,7 +471,7 @@ xleftmargin=1cm
 
 \begin{singlespacing}
 
-\glsaddall
+\glsaddall %PA: once you have your own abbreviations, delete that \glsaddall (so only the abbreviations/glossary terms that you really use in your text will come here.)
 
 {
 	\titleformat{\section}
@@ -504,12 +507,243 @@ xleftmargin=1cm
 
 \sloppy % enforce alignment to fully justified
 
-\chapter{Content}
+\chapter{Introduction}
 This should be \textbf{bold} and this \textit{italic} and finally \textbf{\textit{bolditalic}}. When one want to use an abbreviation or acronym like \gls{html} using the \textbf{\textbackslash{}gls} command in \gls{latex}, the first time, it comes with it full version and for all next uses in it short \gls{html} form. Of course, when needed, the full version is available using e.g. the \textbf{\textbackslash{}acrlong} command.
 
 The defined terms like \gls{maths} use the same \textbf{\textbackslash{}gls} \gls{latex} command. The Capitalized can be obtained with \textbf{\textbackslash{}Gls}. Should be avoided; but to have all the abbreviations and terms, even the non-used ones, use the \textbf{\textbackslash{}glsaddall} command before printing the list of Abbreviations. 
 
-\section{Section}
+\chapter{Theoretical background}
+\textbf{EXPLANATION: What is already known about your chosen subject area and what is not known? Discuss ideas in previous studies relevant to your topic (a brief introduction to the current state of knowledge and practise in your subject area). Identify a gap in the subject area and justify the purpose of your project, that is, the focus of your topic.}
+
+Evaluating and measuring the adequacy of a programming job applicant
+
+Evaluating of programmer's skills in general is a daunting task. Programming consists of a vast number of different types and languages and each of these has it's own know-hows and preferred ways of doing things. Knowing all of these would be required for giving perfect evaluations regardless the candidate and the job opening, therefore instead of trying to master all of the aspects of programming there are some rules of thumb that can be used instead when going through the list of potential candidates.
+
+When grading the potential candidates trying to find evidence proving knowledge and capability is the most effective and trustworthy way of approach.\cite[p.~6-7]{mcculler:book} While it is easy to see the quantity of code a programmer has written it is incredibly difficult for an inexperienced programmer or let alone a recruiter to piece together the level of skill required to write that code, therefore the person making the final evaluations should be someone who possesses enough knowledge to make reliable deductions. For instance, a complicated algorithm might require a lot of thought and time while only resulting in a few lines of code, on the other end of spectrum writing markup languages such as \gls{html} result in large quantities of code without requiring much thought. A candidate without any proof of skill should, however never be considered a potential hire.
+
+Along with experience it is important to define the applicant's immediate- and capability tools to figure out the true potential and benefit. Immediate tools are basically the tools that the person obtains and capability tools are tools that the person could potentially have. These tools include the ability to learn, master and teach the following:
+
+\vspace{-17pt} 
+\begin{itemize}
+\item New construction methods
+\item New programming languages
+\item New techniques
+\item New platforms
+\item New software domains, such as embedded systems or cloud services
+\item Recognizing the need to innovate
+\item Innovating and building new tools
+\item Collaborating with experts in disparate roles and domains
+\end{itemize}
+\vspace{-17pt} \cite[p.~10]{mcculler:book}
+
+These tools can be inferred from the applicants personality, social- and cognitive learning skills. After regarding these some applicant may appear as a much more preferable hire than others even thought their previous experience would indicate that their abilities are at a same level.
+
+When there is no way to differentiate candidates from one another code tests are also a viable solution. The issue with code tests is that they are often unreliable and require a lot of time to construct properly. There are a few approaches to code tests but to build a language neutral code test, a test that is not specifically for a certain programming language, the use of pseudo code, a language that is often used when teaching the basics of thinking as a programmer, is recommended. \textbf{(LÄHDE)}. More on this and building of code tests in Section \hyperref[sec:evaluating]{Evaluating programmers in general}.
+
+
+
+There exists information about building an effective team of programmers and how to sell your company so that programmers are interested in it. These provide information about what tools and methods can be used to make the IT recruitment process as fluent and reliable as possible. What is missing is an application that could aid in aforesaid. The approach I chose was to try building a code test that could aid in the evaluation process and an application that would target applicant's data evaluation and would approximate the candidate's suitableness for a job description using GitHub and Stack Overflow \gls{api}s. 
+
+\cite{baggelaar:thesis}
+
+\section{Overview of the state of programming}
+
+\textbf{EXPLANATION:} Quick history and current trends (what companies are looking for). %PA: is that your way you want to start the chapter? If so, check with language advisor if s/he agree with that style. If I remember correctly, in the thesis guide, it says that starting chapter/section with summary is outdated way of doing (which does not mean wrong)
+%JJ: the EXPLANATION that is in the beginning of each Chapter/Section/Subsection is just so that it would be easier for me to remember my initial thoughts about the chapter and for you to see what kind of content I was planning on putting in there.
+
+Modern society is digital and everything that can be will be digitalized. There were almost 22 billion devices connected to Internet in 2016 and Statista, one of the leading statistic companies on the Internet, approximates that in year 2019 that number would be 50 billion. \cite{statista:numberof} Nowadays programming is required to produce content for all sorts of devices and good programmers are valued highly. There is an ever growing demand for new software and therefore \gls{it} companies are trying to master recruiting.
+
+Programming has (come a long way since the beginning) %PA: In general, avoid as much as possible parenthesis. If relevant use short/long dashes https://en.wikipedia.org/wiki/Dash (e.g. in latex Em-dash: --- (three minus) or \textemdash) %JJ: Thanks for the parenthesis tip! The text in parenthesis is an alternative start and will be removed once I decide what kind of start I would like to use, not going to remain there for long.
+a long history and there are multiple theories where it originates from. According to the most popular of these theories it all started AD 60 when Heron of Alexandria build a programmable puppet show where there were pulleys and strings that could be used to change and control the puppets' movements \cite{Randell:1994}. Programming began its' growth-spur in the 1980's after programming languages and technology had evolved to a state where programmers had familiarized themselves to the available computing languages of that day and the devices had enough processing memory. \textbf{(LÄHDE)}
+
+In the year 2014 there were roughly 29 million ICT-skilled workers and 18 million software developers. \cite{idc:numberof} The numbers may seem sufficient but it is not due to the quick advancement of programming languages and technologies. Many programmers simply lack the skills and the motivation to keep developing themselves and keep in par with the evolution of technology.
+
+Current trend in IT consulting companies is that they seek for young talents and then gradually make their job descriptions more demanding as their skills improve. This trend is great for talented programmers who seek to learn more while getting paid but for those who are struggling with the basics it means that in often cases they end up as drop outs. Some companies have seen those people as potential source of income and short training courses are being introduced that promise the attendants that they would learn programming in a short period of time.
+
+\section{Recruitment}
+\textbf{EXPLANATION:} What is recruitment?
+
+Recruitment can be described as "... the process of attracting, screening, and selecting a qualified person (from within or outside of an organization) for a job opening." \cite[p.~1]{konceptanalytics:book} and in practise it consists of publishing job advertisements, reviewing job applications, interviewing and potentially testing the applicants then hiring or presenting the candidates to the client company.
+
+Before making the decision of hiring new employees it is critical to evaluate how beneficial the new hire would be for the company. Lack of knowledge regarding the current employees' strengths and team structure will not benefit the company, but instead leads to either waste of time after several candidate meetings and interviews and eventually making a decision to not hire anyone or by hiring someone who actually is not what %PA: can a person be referred with "what"? %JJ: What refers to the job opening/hire/position and who refers to the person so the sentence is valid.
+was really needed. Defining the job-description and the needs of the company as specifically as possible and then trimming the requirements to just the bare minimum is an easy to execute and a solid strategy when finding out what would make the company's workforce grow. The strength of this strategy is that the important parts of what the job consists of get highlighted, which helps recruiters identify what is necessary and what are the more irrelevant details that can be used to make distinctions between candidates.
+
+Bad or failed hires lead to loss of money, deteriorate the office's atmosphere and harm the brand. A successful hiring brings new energy and workforce to the office and increase both efficiency and quality of work. New employees are expected to be fast learners and adaptive to a variety of tasks. \cite[p.~100]{viitala:book} They may also open new channels for \gls{hr} with their connections to universities or previous workplace co-workers to name a few. It is a good practise to map out new employees social network and try to figure out if the employee's contacts could potentially be of help when recruiting again.
+
+Recruitment is a potently growing and competitive line of business. The recruitment industry has been steadily growing and in year 2015 the global annual growth was 8.6\% with sales revenues of €450 billion \cite{ciett:economic}. One of the biggest sectors of recruiting that has seen a lot of growth recently are engineers which are also one of the hardest to hire. \textbf{(LÄHDE)} One reason for that is that there is a shortage of competent programmers and for companies it is very difficult to distinguish themselves from the competitors and appear more appealing. Exaggerating a little by generalizing, it has come to that that %PA: while it's correct, would it make sense to have a comma separation between the 2 thats? Question for English teacher ;) %PA: I'll ask :)
+advanced programmers can choose where they wish to work. Regarding the line of work hiring has become more difficult, employees have higher workplace standards which originates to improved employer branding and social media advertising. To compensate for the competition, recruiters and the whole \gls{hr}-sector need to be very active and try to make the company recognizable, stand-out and well known.
+
+\subsection{Recruitment process}
+\textbf{EXPLANATION:} Default/aTalent recruitment process, length etc. AND what are the most time consuming and problematic areas.
+
+The whole recruitment process depends a lot of the company and the job-opening and there is a lot of margin for variance. As discussed before there is not a single mold that would fit to every company or role there is but process length can be utilized as a meter for segregating the recruitment processes into smaller contexts.
+
+In some cases what a company needs is any kind of an employee as fast as possible. A role like this could be for example the position of a cashier, or any other kind of job that can be done with someone with a low level of education. In these cases it is not worth the effort, time and money to go through a long process, but instead saving resources by getting a fast hire is all that matters. When a company wants someone for a specific position that is either intellectually or otherwise demanding, the process will get lengthier. As the requirements grow so does the recruiting process length.
+
+In the best case, a cashier's position can be filled within days but to find someone in the same time period for any role that requires a highly educated employee of any profession is practically impossible without an existing database that consists of potential candidates. This is because when the requirements of the job description increase, the amount of people able to fill those requirements decreases inversely proportionally.
+
+The main feature of a well planned and executed recruitment process is that it is as streamlined as possible. Both the company recruiting and the applicants should be kept in mind and in ideal case each party would be satisfied after the process. The biggest downfall of a recruiting process is making the evaluation model overly complex. Use of committees, approval steps and staying distant will end up to complications on all parties. Having a lengthy and overly complex recruitment process will lead to candidates dropping out and to other companies snatching the most prominent candidates. \cite[p.~42]{mcculler:book}
+
+In the following Figure \vref{fig:short-pipe} there is a simplistic and efficient evaluation pipe. For many a position the following evaluation pipe is insufficient but it is good to keep in mind what would be the skeleton of an evaluation pipe and then build block by block more phases depending on the difficulty of the job description.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=7.1cm]{short_pipe}
+  \caption{A short, straing evaluation pipe \cite{mcculler:book}.}
+  \label{fig:short-pipe}
+\end{figure}
+
+
+
+%-------------------------------------------------------------------------------------
+% TÄHÄN ANNIKAN KANSSA KÄYDYSTÄ KESKUSTELUSTA SELITYS ATALENTIN REKRYTOINTIPROSESSISTA,
+% SEKÄ KUVA JOSTA SELVIÄÄ PROSESSIN VAIHEET JA PULLONKAULAT
+%--------------------------------------------------------------------------------------
+
+\subsection{Finding of suitable candidates}
+\textbf{EXPLANATION:} Reading into clients’ minds and trying to find the key attributes and what is really required/wanted and what is just a bonus. 
+
+%-------------------------------------------------------------------------------------
+% JOKU HyVÄ ALKU TÄHÄN NÄIN
+%-------------------------------------------------------------------------------------
+
+When searching for and contacting candidates activity is the key. When a potential candidate turns up the recruiter should immediately try contacting them directly so as to be ahead of competitors. Most of the times recruiters are not going to get a direct response to their emails and a response rate of 20\% can be considered very good according to Ardy Daie, a technical recruiting expert working in KV (Khosla Ventures). According to Ardy Daie, when recruiters are contacting suitable employees they "are planting seeds, not everyone is going to respond to you right away." by this he means that companies contacting them will be remembered and that persistence will eventually lead to results. \textbf{(LÄHDE)}
+
+There are multiple different kinds of candidates but tersely a candidate is someone who "... may be actively looking for a job, passively looking, not looking but open to moving, not looking and actually quite content, or looking for a future position (such as after graduation)." \cite[p.~24]{mcculler:book} therefore using a combination of channels such as headhunting and job advertisements is the optimal way of reaching as many potential candidates as possible. The more channels available the better candidates usually can be found but if the job opening or the company does not appeal interesting then it is best to strip the channels to a certain level to save resources.
+
+
+
+\subsection{Methods of evaluation}
+\textbf{EXPLANATION:} How well candidates fit into role, what needs to be taken into consideration.
+
+\subsection{IT Recruiters' requirements}
+\textbf{EXPLANATION:} What makes IT recruiting so difficult and how the recruiters can improve themselves / be educated to be enabled to do their work more efficiently and properly, what requirements need to be filled so that IT recruiter will excel in their work.
+
+\section{Defining skills}
+\textbf{EXPLANATION:} Define skill so it can be referred later. Explain the concept of skill and some theoretical meters for skill comparisons.
+
+There are people that are naturally very good at something. This might be misinterpreted as being skilled: "A skill is \textbf{a learned ability} to carry out a task with pre-determined results often within a given amount of time, energy, or both. In other words the abilities that one possesses. Skills can often be divided into domain-general and domain-specific skills." \cite[p. ~4]{howland:book}.
+
+All skills must be obtained via practise. When someone has a biological prowess to learning something easily, such as mathematics or languages, they are not actually skilled in learning that thing, they are talented. When speaking of skilled learning then a person is using an array of tools and methods that make learning easier for them.
+
+As previously cited most skills can be categorized into either of the two, domain-general or domain-specific skills. Domain-general skills are skills that could be used in more than a single task. These are much broader and a good example of such a skill could be social skills. Modern teaching theories emphasize, that instead of teaching dividual subjects it would be much better to try to build a bridge between them and merge them into a larger context \cite{mansoor:article}. A good concrete example of this are subjects like mathematics and physics, both of these thrive to explain how the world works and they both complement one another. There are some differences but knowing physics definitely does not affect mathematical competence. The reason why domain-general knowledge is often appreciated more is that when skills get combined into a larger context of knowledge and those skills actually become a tool that can be used to adapt to a vary of situations.
+
+Most job descriptions require both domain-general and -specific skills, but there are also those that do not. Carpenters for instance can excel in their job without having many other skills outside of their carving skills. Or to modernize the job description there are companies that are looking for Java programmers for positions that only have a single requirement, being good at Java. When looking into a typical job description it is construct with skills from both categories of skill.
+
+Skill can be measured. If a set of job applicants are provided with a region neutral test and all applicants are working under circumstances that are most favorable for their performance then the applicant with the most skill on the subject of the test should score the highest or if multiple candidates score the same highest score then finish the test the fastest. 
+
+Situation like this is not very likely to happen however, for all the candidates to be at their best performance is very unlikely. Therefore measuring skill legitimately with any a test is actually incredibly difficult if there is any type of pressure involved such as in a situation where the test would be a delimiting factor for being hired or not. What companies can use such a test for is just as an addition to the whole recruitment process.
+
+\subsection{Defining programming skills}
+\textbf{EXPLANATION:} What is programming skill and what it consists of (logical thinking, algorithms, is it all math or does creativity have a place in it etc.).
+
+Before trying to map out what are the things that programming skills could potentially consists of, it is necessary to define a programmer. A programmer is someone who writes computer software. In this case a computer could be any machine that can interpret binary code. A programmer's skills consists of domain-general and domain-specific skills. One of such a domain-specific skill is programming skills. These are "the skills required to write a program so that data may be processed by a computer" \cite{collins:skills}.  
+
+In the list below there are some criteria that make a good programmer:
+\vspace{-17pt} 
+\begin{itemize}
+\item Good knowledge of at least one programming language
+\item Understanding of the underlying systems
+\item Effective use of command line tools
+\item Ability to debug
+\item Capable of testing the code
+\item Interest in current trends and future technologies
+\item Motivated to learn the new
+\item Co-operative, good at such things as team work and communication
+\item Obtains problem solving skills
+\end{itemize}
+\vspace{-17pt}
+
+Items such as "Good knowledge of at least one programming language" and "Capable of testing the code" are examples of domain-specific skills that correlate to programming skill.
+
+A similar kind of list for a person with good programming skills could be something like the following:
+
+\textbf{ETSI JOKU HYVÄ LISTA!}
+
+\vspace{-17pt} 
+\begin{itemize}
+\item Writes working and efficient code that is readable
+\item Uses algorithms effectively
+\item Makes sure that the code is as secure and safe from cyber-attacks as possible
+\item Can create and maintain large projects with smart directory solutions
+\item Knows the theory and can apply it to needs
+\end{itemize}
+\vspace{-17pt}
+
+There are many areas of programming that the previous list doesn't cover and to define good programming skills would require a whole another study. 
+
+\subsection{Evaluating programmers in general}
+\label{sec:evaluating}
+\textbf{EXPLANATION:} How to separate good programmers from bad and are there some global knowledge behind programming or is it all language specific etc. %PA: I don't very like "good or bad" there are usually shades of grey in-between... try to find more neutral terms? %JJ: Just an explanation for the chapter. See my comment on line 517
+
+When companies are trying to find the most suitable candidate for a job opening they will need to pinpoint the important attributes and skills that they are looking for and then execute a plan for evaluating applicants. One way of approach is to make a list containing both domain-general and domain-specific skills and use it in the initial elimination process and later as a tool for grading candidates and finding the most suitable one.
+
+The following is a list of requirements that one Finnish company providing integrated retail and supply chain planning solutions used in one of their System and Network Administrator job openings: \cite{relex:apply}\newline
+\textbf{In this role your responsibilities will include:}
+\vspace{-17pt} 
+\begin{itemize}
+\item Deploy, maintain, configure, upgrade and retire servers and applications in accordance with company standards.
+\item Manage firewalls and network devices.
+\item Continually monitor network and server status using monitoring systems and react upon alarms.
+\item Troubleshoot applications and system problems.
+\item Participate in IT infrastructure development projects to support day to day operations and projects; investigate new technologies.
+\end{itemize}
+\vspace{-17pt}
+
+\textbf{We value the following skills in our ideal candidates:}
+\vspace{-17pt} 
+\begin{itemize}
+\item Prior professional experience of Linux System Administration
+\item Prior experience with infrastructure hardware management and troubleshooting.
+\item You master scripting (Bash, Python, etc.)
+\item You are not afraid of responsibility and can handle multitasking
+\item You are fluent in both verbal and written English
+\item You have a good attitude, and you are fun to work with!
+\end{itemize}
+\vspace{-17pt}
+
+\textbf{We consider as an advantage:}
+\vspace{-17pt} 
+\begin{itemize}
+\item Knowledge of orchestration tools like Ansible or Docker
+\item Experience with AWS or monitoring systems administration is also seen as an advantage
+\item Fluency in Finnish, Swedish, German, French or Italian
+\end{itemize}
+\vspace{-17pt}
+
+
+The first section consists of the big themes and is useful when the recruiter has found multiple suitable candidates and differentiating has become difficult. The second section is what is used to do most of the eliminating consisting of both domain-general and -specific skills. Time periods such as "prior experience" are used to secure that candidates have the competence to manage those areas of the job. There are some attributes on the list that have to do with ones capability-tools and in many cases those are weighted as most valuable. Last section consists of domain-specific skills that can be used to make separations between otherwise equally capable candidates.
+
+The basic
+
+\textbf{Figure tähän}
+
+\subsection{Existing solutions to programmer evaluation}
+\textbf{EXPLANATION:} Existing platforms, methods etc.
+
+\subsection{Other ways of information gathering}
+\textbf{EXPLANATION:} Looking into the applicant’s profile and skillset (LinkedIn, GH, SO, Education, Motivation (Letter / CV), recommendations, hobbyism).
+\chapter{Methods and materials}
+\textbf{EXPLANATION:} How was the project carried out in practise, and how was the data analysed? Describe the context in which the work was carried out (such as the overall project and its desing, your specific tas, work environment) and the workflow. Describe the methods and materials used (accurate details of data, software, materials, methods, techniques). Give a full account of exact test arrangements and measurements carried out, and accurate details of data analysis. The issues included in this section depend on the nature of your project. Whatever the issues, describe them in sufficient detail and in logical sequence.
+\section{Using code tests as a way of evaluation}
+\section{Ways of mitigating and simplifying the IT recruitment process}
+\textbf{EXPLANATION:} Going through all the problematic parts explained in the theoretical part of the thesis and grabbing a single subject that could potentially be improved.
+
+\subsection{Programmatic solutions to recruitment process problems}
+\textbf{EXPLANATION:} What could be improved via programming, screen some options and select one of them. Explaining why the specific subject was chosen and introduce what existing data such as APIs (GH and SO) could be used.
+
+\subsection{Building of an applicant compatibility evaluator}
+\textbf{EXPLANATION:} Dig in deeper to APIs and the algorithms behind the evaluator. Also what thoughts and how well did the application fill its’ role (was it useful/not why?).
+\chapter{Results}
+\textbf{EXPLANATION:} What was found/created/designed/produced? This section should include a clear presentation of the results, even possible errors and sources of errors. Use an appropriate mixture of text, tables and figures. In this section you should also say if you met the goal(s) set in the introduction.
+\chapter{Discussion}
+\textbf{EXPLANATION:} What do the results mean? Evaluate the results and the project: such as benefits and drawbacks, reliability, significance and usefulness of the results, validity of any conclusions drawn from the results, technical and economical aspects. Discuss, for example, possibilities of applying the results for other purposes than the initial, and problems encountered during the project and decisions made. Evaluate whatever the goal set in the introduction was met: compare the results with those expected. Provide a critical and objectibe ebaluation of the results and implementation of your project, and place the results in context with previous studies (discussed in the theoretical background section).
+\chapter{Conclusion}
+\textbf{EXPLANATION:} What can be concluded? This section usually begins with a restatement of the goal of the project, and includes a brief summary of the key results of the project and a conclusion about the significance and implications of the results, for your client ant perhaps the field in general. Also mention strengths and limitations of the project and ways in which the project could be changed and improved if carried out again. In the end recommend further action, such as further study, if relevant. Keep this section short (a few paragraphs, no subheadings), tie in and highlight the main points of the project and its results and draw a clear conclusion.
+
+
+
+\section{}
 Here is an example how to add biblio entry \cite{kopka:guide} using the \textquotedblleft\textbackslash{}cite\textquotedblright ~\gls{latex} command ~\cite[section 4.2]{tobias:book}. Note that a paragraph is added by forcing a new line.
 
 And let also try the figure (see figure \vref{fig:latex-cover}) and internal reference (with label and ref or vref). The reference can be done to any label, for example why not to appendix \ref{appx:first} or to appendix \ref{appx:second}? To note, \gls{latex} will place the figure to the best place (except with forcing). Let them float till the final of final edit\ldots ~then force them to not break a paragraph.%hugly hack... I'm sorry
